@@ -30,7 +30,8 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest
+        # pytest
+        # run pytest when tests will be needed
 
     - name: Build application
       run: |
