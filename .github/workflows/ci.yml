@@ -35,4 +35,5 @@ jobs:
 
     - name: Deploy to S3
       run: |
-        aws s3 cp my-app/ s3://my-bucket-name/ --recursive
+        aws s3 cp my-app/ s3://translogixbucket/ --recursive
+ 
