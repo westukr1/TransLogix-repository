@@ -1,4 +1,4 @@
-name: Deploy to AWS
+name: Deploy to AWS S3
 
 on:
   push:
@@ -7,34 +7,32 @@ on:
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4  # Оновіть до v4
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v5  # Оновіть до v5
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-       # pip install -r requirements.txt
+       # pip install -r requirements.txt activate when requirements will be fixed
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v3  # Оновіть до v3
+      uses: aws-actions/configure-aws-credentials@v3
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: eu-central-1
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: List files
+      run: ls -la
 
     - name: Deploy to S3
       run: |
         aws s3 cp my-app/ s3://my-bucket-name/ --recursive
-
-    - name: Deploy to EC2 (або інші команди)
-      run: |
-        # Тут ви можете додати команди для деплою на EC2 або інші AWS сервіси
