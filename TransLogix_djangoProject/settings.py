@@ -80,10 +80,15 @@ WSGI_APPLICATION = 'TransLogix_djangoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'TransLogix_main_db',
+        'USER': 'root',  # Замініть на вашого користувача MySQL
+        'PASSWORD': 'Kitmarsik#1',  # Замініть на ваш пароль MySQL
+        'HOST': '127.0.0.1',  # Або адресу вашого сервера MySQL
+        'PORT': '3306',  # Або порт вашого сервера MySQL
     }
 }
+
 
 
 # Password validation

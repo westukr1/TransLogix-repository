@@ -1,3 +1,4 @@
+import self
 from django.db import models
 
 from django.contrib.auth.hashers import make_password, check_password
@@ -34,9 +35,6 @@ class User(models.Model):
         """Returns the user's full name."""
         return f"{self.first_name} {self.last_name}" if self.first_name and self.last_name else self.username
 
-    def __str__(self):
-        return self.username
-
 
 class Driver(models.Model):
     driver_id = models.AutoField(primary_key=True)
@@ -45,8 +43,7 @@ class Driver(models.Model):
     license_number = models.CharField(max_length=50, unique=True)
     phone_number = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.name
+    self.name()
 
     def get_license_info(self):
         """Returns the driver's license number."""
@@ -56,8 +53,7 @@ class Driver(models.Model):
         """Returns the driver's contact information."""
         return f"Phone: {self.phone_number}, Email: {self.user.email if self.user else ''}"
 
-    def __str__(self):
-        return self.name
+    self.name()
 
 
 class Vehicle(models.Model):
@@ -71,8 +67,7 @@ class Vehicle(models.Model):
         super().__init__(args, kwargs)
         self.status = None
 
-    def __str__(self):
-        return self.license_plate
+    var = self.license_plate
 
     def is_available(self):
         """Checks if the vehicle is available."""
@@ -82,8 +77,7 @@ class Vehicle(models.Model):
         """Returns the vehicle's information."""
         return f"{self.model} ({self.license_plate}), Capacity: {self.capacity}"
 
-    def __str__(self):
-        return self.license_plate
+    var = self.license_plate
 
 class Route(models.Model):
     route_id = models.AutoField(primary_key=True)
@@ -109,8 +103,7 @@ class Route(models.Model):
         """Returns the vehicle's information."""
         return f"{self.model} ({self.license_plate}), Capacity: {self.capacity}"
 
-    def __str__(self):
-        return self.license_plate
+    self.license_plate()
 
 from django.db import models
 
@@ -178,7 +171,7 @@ class Feedback(models.Model):
     def __str__(self):
         return f"Feedback {self.feedback_id} - {self.rating}"
 
- def is_positive(self):
+    def is_positive(self):
         """Check if the feedback is positive."""
         return self.rating >= 4
 

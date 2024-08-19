@@ -2,7 +2,7 @@
 from django.apps import AppConfig
 
 class TranslogixConfig(AppConfig):
-    name = 'translogix'
+    name = 'TransLogix_djangoProject'
 
     def ready(self):
-        import translogix.signals  # Import signals to ensure they are loaded
+        import TransLogix_djangoProject.signals  # Import signals to ensure they are loaded
